@@ -1,8 +1,6 @@
 <?php
-include("dbcon.php");
+include("queries/dbcon.php");
 
-
-session_start();
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(!isset($_POST["email"]) | !isset($_POST["pwd"])){
@@ -10,14 +8,14 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     else{
         // consultar valores en base de datos
-        $query = "SELECT email FROM ingweb.users where email ='".$_POST["email"]."' and password ='". $_POST["pwd"]. "'";
+        $query = "SELECT email FROM user where email ='".$_POST["email"]."' and password ='". $_POST["pwd"]. "'";
         $cursor = $con_bd->query($query);
         $rows = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
         
         
         if(count($rows)==1){
             $_SESSION["email"]=$_POST["email"];
-            header("location:home.php");
+            header("location:index.php");
             
         }
         else{

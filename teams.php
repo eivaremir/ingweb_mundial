@@ -1,5 +1,5 @@
 <?php
-include('dbcon.php');
+include('queries/dbcon.php');
 
     $sql = "SELECT * FROM team";
     $result = $con_bd -> query($sql);
