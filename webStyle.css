@@ -1,0 +1,46 @@
+body {
+	margin: 5px 50px;
+}
+.mainBody {
+	background-image: url(download.jfif);
+	background-position: center;
+	background-attachment: fixed;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+#titlePage {
+	font-size: 50px;
+	color: #8d1c3d;
+}
+.top {
+	display: flex;
+	font-family: 'Inter';
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+}
+
+#button {
+	background-color: #8d1c3d;
+	font-family: 'Inter';
+	color: white;
+	padding: 14px 33px;
+	border-radius: 30px;
+	text-decoration: none;
+	margin: 37px 3px;
+	cursor: pointer;
+	align-self: start;
+	font-weight: 500;
+}
+#button2 {
+	font-family: 'Inter';
+	color: #8d1c3d;
+	padding: 12px 23px;
+	border-radius: 30px;
+	text-decoration: none;
+	margin: 37px 3px;
+	cursor: pointer;
+	align-self: start;
+	border: solid;
+	font-weight: 500;
+}
