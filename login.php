@@ -31,6 +31,7 @@ if(!empty($_SESSION["email"])){
     ";
 }
 
+include("alerts.php");
 echo "
 <form action='login.php' method='POST'>
 <label for='email'>correo</label>
