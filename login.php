@@ -1,6 +1,6 @@
 <?php
+include("layout/root.php");
 include("queries/dbcon.php");
-
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     if(!isset($_POST["email"]) | !isset($_POST["pwd"])){
@@ -32,17 +32,29 @@ if(!empty($_SESSION["email"])){
 }
 
 include("alerts.php");
-echo "
-<form action='login.php' method='POST'>
-<label for='email'>correo</label>
-<input name='email'>
-
-<label for='pwd'>password</label>
-<input name='pwd'>
-<button>login</button>
+?>
+<form action='login.php' method='POST' align="center" >
+    <img src="assets/Person.png" alt="user"> <br>
+    <input 
+    type="text" 
+    name="email"
+    placeholder="Correo"
+    class = "type"
+    >
+    <br>
+    <input 
+    name='pwd'
+    type="password" 
+    placeholder="Contraseña"
+    class = "type"
+    > 
+    <br>
+    <button id="botones">Login</button>
 </form>
-";
-
-
+<?php
+include("layout/root2.php");
+?>
+<!--
 //session_unset();
 //echo "session user is ". $_SESSION["user"];
+--> 

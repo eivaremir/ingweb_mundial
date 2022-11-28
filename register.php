@@ -1,6 +1,6 @@
 <?php
 include("queries/dbcon.php");
-
+include("layout/root.php");
 
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
     $email=trim($_POST["email"]);
@@ -33,16 +33,39 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 include("alerts.php");
-    echo "
-        <form action='register.php' method='POST'>
-            <label for='email'>Correo </label>
-            <input name='email'>
-            <label for='name'>Nombre</label>
-            <input name='name'>
-            <label for='pwd'>Contraseña</label>
-            <input name='pwd'>
-            <label for='pwd2'>Repetir contraseña</label>
-            <input name='pwd2'>
-            <button>Registrarse</button>
+?>
+        <form action='register.php' method='POST' align="center">
+            <img src="assets/Add-Person.png" alt="registrar"> <br>
+            <input 
+            name='email'
+            type="text" 
+            placeholder="Correo"
+            class = "type"
+            >
+            <br>
+            <input 
+            name='name'
+            type="text" 
+            placeholder="Nombre completo"
+            class = "type"
+            >
+            <br>
+            <input 
+            name='pwd'
+            type="password" 
+            placeholder="Contraseña"
+            class = "type"
+            >
+            <br>
+            <input 
+            name='pwd2'
+            type="password" 
+            placeholder="Repetir contraseña"
+            class = "type"
+            >
+            <br>
+            <button id="botones">Registrarse</button>
         </form>
-        ";
+<?php
+include("layout/root2.php");
+?>
