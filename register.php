@@ -17,12 +17,15 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
     }
     else{
         $insert_user_query = "insert into user (name,email,password) values ('".$name."','". $email . "','".$pwd . "');";
-
-        if($con_bd->query($insert_user_query)){
-            header("location:login.php?result=user_registered");
-        }
-        else{
-            header("location:create_transaction.php?error=dberror&content=".$con_bd->error);
+        try {
+            if($con_bd->query($insert_user_query)){
+                header("location:login.php?result=user_registered");
+            }
+            else{
+                header("location:create_transaction.php?error=dberror&content=".$con_bd->error);
+            }
+        }catch(Exception $e){
+            header("location:register.php?error=dberror&content=".$con_bd->error);
         }
     }
 
