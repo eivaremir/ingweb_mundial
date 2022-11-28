@@ -30,7 +30,7 @@ $sql = "SELECT * FROM team_match inner join team on team_match.team = team.id wh
          }
     }
 
-    function enemigo($equipo, $juego){
+function enemigo($equipo, $juego){
     include('queries/dbcon.php');
 
     $sql = "SELECT * FROM team_match";
