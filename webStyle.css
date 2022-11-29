@@ -96,7 +96,9 @@ form {
 }
 .match-container:hover {
   box-shadow: 0 0 9px rgb(100 0 0 / 45%);
-  transition: 0.3s;
+  transition: 0.2s;
+  background-color: #8d1c3d;
+  color: white;
 }
 .match-result {
   display: flex;
@@ -105,8 +107,8 @@ form {
   align-items: center;
 }
 .flag {
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
