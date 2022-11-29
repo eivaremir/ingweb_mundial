@@ -123,3 +123,23 @@ form {
 #arrow {
 	width: 30px;
 }
+.teamsDad {
+	display: flex;
+	flex-wrap: wrap;
+}
+.teamsSon {
+	flex: 1 0 20%; /* explanation below */
+	margin: 5px;
+	height: 100px;
+	text-align-last: center;
+}
+#linkfont {
+	font-family: 'Inter';
+	text-decoration: none;
+	color: #252525;
+	font-weight: 500;
+}
+
+#starImage {
+	vertical-align: middle;
+}
