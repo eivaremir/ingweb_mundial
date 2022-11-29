@@ -4,19 +4,63 @@
 <head>
     <title>Favorito</title>
     <?php include("layout/head.php") ?>
+    <style>
+    .teamsSon {
+        display: flex;
+        overflow: auto;
+    }
+
+    .titulo {
+        overflow: auto;
+        float: left;
+
+    }
+    </style>
 </head>
 
 <body>
     <?php
     include("layout/navbar.php");
     Navbar("Favoritos", "index.php");
+    include("queries/user_data.php");
+
+    $sql = "SELECT * FROM user";
+    $result = $con_bd -> query($sql);
+    if($result -> num_rows > 0){
+        while($row = $result -> fetch_assoc()){
+            $favorito= $row['favorite_team'];
+            
+            $sql = "SELECT * FROM team";
+            $result = $con_bd -> query($sql);
+            if($result -> num_rows > 0){
+                while($row = $result -> fetch_assoc()){
+                    if ($favorito == $row['id']){
+                        echo "<div class=titulo><h1>" .$row["name"]. "</h1></div>";
+                        echo "<div class=teamsSon><img src=https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $row["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46> <br></div>";
+                        echo "<div><h2>" .$row["code"]. "</h2></div>";   
+                        }
+                        echo "</div>";
+                }
+            }
+        }
+         }
+        $sql = "SELECT * FROM group_statistics";
+        $result = $con_bd->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                if($favorito == $row["id"]){
+                echo "<h2>Grupo " . $row["GROUP"] . "<h2><br>";
+                }
+            }
+        }
+
+
     ?>
     <?php
-    include("queries/user_data.php");
     if (!$USER) {
         header("location:login.php");
     }
-    echo "<h1>Partidos</h1>";
+    echo "<h2>Partidos</h2>";
     echo "<div class='matches'>";
     $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =" . $USER["favorite_team"] . " group by `match` order by fm.date;";
     $cursor = $con_bd->query($query);
