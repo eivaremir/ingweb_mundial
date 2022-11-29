@@ -23,7 +23,7 @@
         $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
         $contentEditable = "";
 
-        if ($USER["is_admin"]) {
+        if ($USER && $USER["is_admin"]) {
             $contentEditable = "contentEditable";
         }
         echo "
