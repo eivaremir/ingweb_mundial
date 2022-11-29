@@ -8,7 +8,7 @@ $arr = array();
 
 foreach ($matches as $match) {
 
-    $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by id;";
+    $query = "SELECT team_match.match,team_match.goals,team.code,team.name,fm.date FROM team_match inner join football_match fm on fm.id = team_match.match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by team_match.id;";
 
 
 
