@@ -7,50 +7,21 @@
 </head>
 
 <body>
-
+    <?php
+    include("layout/navbar.php");
+    Navbar("Favoritos", "index.php");
+    ?>
     <?php
     include("queries/user_data.php");
 
-    $sql = "SELECT * FROM user";
-    $result = $con_bd -> query($sql);
-    if($result -> num_rows > 0){
-        while($row = $result -> fetch_assoc()){
-            $favorito= $row['favorite_team'];
-            
-            $sql = "SELECT * FROM team";
-            $result = $con_bd -> query($sql);
-            if($result -> num_rows > 0){
-                while($row = $result -> fetch_assoc()){
-                    if ($favorito == $row['id']){
-                        echo $row["name"]. "<br>";
-                        echo $row["code"]. "<br><br>";
-                    }
-                }
-            }
-         }
-    }
-
-    $sql = "SELECT * FROM team_match";
-    $result = $con_bd -> query($sql);
-    if($result -> num_rows > 0){
-        while($row = $result -> fetch_assoc()){
-            if($favorito == $row["team"]){
-                $partido=$row["match"];
-                juegos($partido); 
-            }
-         }
-    }
-
-    function juegos($partido){
-    include("queries/user_data.php");
-
+    echo "<h1>Partidos</h1>";
     echo "<div class='matches'>";
-    $query = "SELECT * FROM football_match  order by date;";
+    $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =1 group by `match` order by fm.date;";
     $cursor = $con_bd->query($query);
     $matches = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
 
     foreach ($matches as $match) {
-        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $partido . " order by id;";
+        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by id;";
         //echo $query;
         $cursor = $con_bd->query($query);
         $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
@@ -60,6 +31,7 @@
             $contentEditable = "contentEditable";
         }
         echo "
+            
             <div class='match-container'>
             <div class='match-result'>
                 
@@ -82,7 +54,6 @@
         ";
 
     }
-}
     echo "</div>";
 
     ?>
