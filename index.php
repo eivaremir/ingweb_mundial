@@ -18,15 +18,34 @@
         </div>
     </div>
     <div class="bottom">
-        <div class="dashButton">
-            Resultados
-        </div>
-        <div class="dashButton">
-        </div>
-        <div class="dashButton">
-        </div>
-        <div class="dashBut"></div>
-        <div class="dashBut"></div>
+        <a href="results.php" id="linkDash">
+            <div class="dashButton">
+                <h1>Resultados</h1>
+            </div>
+        </a>
+        
+        <a href="teams.php" id="linkDash">
+            <div class="dashButton">
+                <h1>Equipos</h1>
+            </div>
+        </a>
+        <a href="" id="linkDash">
+            <div class="dashButton">
+                <h1>Clasificación</h1>
+            </div>
+        </a>
+    <div class="bottom">
+        <a href="groups.php" id="linkDash">
+            <div class="dashButton">
+                <h1 align="center">Tabla de posiciones</h1>
+            </div>
+        </a>
+        <a href="favoritos.php" id="linkDash">
+            <div class="dashButton">
+                <h1>Favoritos</h1>
+            </div>
+        </a>
+    </div>
     </div>
 </body>
 </html>

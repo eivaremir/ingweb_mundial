@@ -14,21 +14,14 @@ body {
 	color: #8d1c3d;
 }
 .dashButton {
-	flex: 9 0 20%;
+	display: flex;
+	margin: 10px;
 	height: 189px;
 	width: 300px;
-	zoom: 5px;
 	background-color: #8d1c3d;
 	border-radius: 25px;
-}
-.dashBut {
-	flex: 1 0 20%; /* explanation below */
-	text-align-last: center;
-	height: 189px;
-	width: 300px;
-	zoom: 5px;
-	background-color: #8d1c3d;
-	border-radius: 25px;
+	justify-content: center;
+	align-items: center;
 }
 
 .top {
@@ -41,8 +34,9 @@ body {
 .bottom {
 	display: flex;
 	font-family: 'Inter';
-	flex-wrap: nowrap;
-	justify-content: space-between;
+	color: #ebebeb;
+	flex-wrap: wrap;
+	justify-content: center;
 	align-items: center;
 }
 
@@ -219,7 +213,8 @@ form {
 #starImage:hover {
 	cursor: pointer;
 }
-.favorite-selector {
-  cursor: pointer;
-  color: black;
+
+#linkDash {
+	text-decoration: none;
+	color: #ebebeb;
 }
