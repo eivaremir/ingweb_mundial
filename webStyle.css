@@ -355,3 +355,7 @@ h3 {
 .team-quote {
   flex-basis: 32%;
 }
+th {
+  background-color: #8d1c3d;
+  color: white;
+}
