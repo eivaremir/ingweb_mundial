@@ -1,14 +1,23 @@
-<?php
-include('layout/root.php');
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Equipos</title>
+    <?php include("layout/head.php") ?>
+</head>
+
+<body>
+    <?php
 include('queries/user_data.php');
 ?>
-<div class="top">
-    <a href="index.php"><img src="assets/arrowback.png" alt="arrow" id="arrow"> </a>
-    <div>
-        <h1 id="titlePage">Equipos</h1>
+    <div class="top">
+        <a href="index.php"><img src="assets/arrowback.png" alt="arrow" id="arrow"> </a>
+        <div>
+            <h1 id="titlePage">Equipos</h1>
+        </div>
     </div>
-</div>
-<?php
+
+    <?php
 $sql = "SELECT * FROM team";
 $result = $con_bd->query($sql);
 if ($result->num_rows > 0) {
@@ -30,10 +39,11 @@ if ($result->num_rows > 0) {
         }
 
         echo "</div>";
+
     }
     echo "</div>";
 }
 ?>
-<?php
-include('layout/root2.php');
-?>
+</body>
+
+</html>

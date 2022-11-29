@@ -18,11 +18,15 @@
         </div>
     </div>
     <div class="bottom">
-        <img src="resultado.jpg" alt="cristi" class="image">
-        <div class="overlay"></div>
-        <div id="boxstyle">
-            <h1>Resultados</h1>
+        <div class="dashButton">
+            Resultados
         </div>
+        <div class="dashButton">
+        </div>
+        <div class="dashButton">
+        </div>
+        <div class="dashBut"></div>
+        <div class="dashBut"></div>
     </div>
 </body>
 </html>
