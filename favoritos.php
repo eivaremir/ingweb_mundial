@@ -13,10 +13,12 @@
     ?>
     <?php
     include("queries/user_data.php");
-
+    if (!$USER) {
+        header("location:login.php");
+    }
     echo "<h1>Partidos</h1>";
     echo "<div class='matches'>";
-    $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =1 group by `match` order by fm.date;";
+    $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =" . $USER["favorite_team"] . " group by `match` order by fm.date;";
     $cursor = $con_bd->query($query);
     $matches = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
 

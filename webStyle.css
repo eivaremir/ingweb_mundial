@@ -219,8 +219,8 @@ form {
   align-items: center;
 }
 .flag {
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -238,7 +238,7 @@ form {
   text-align: center;
 }
 .match-footer {
-  font-size: 0.7em;
+  font-size: 0.8em;
 }
 
 #arrow {
@@ -283,12 +283,11 @@ form {
 .teamsDad {
   display: flex;
   flex-wrap: wrap;
-  margin-top: 30px;
+  gap: 25px;
 }
 .teamsSon {
   flex: 1 0 20%; /* explanation below */
-  margin: 5px;
-  height: 100px;
+
   text-align-last: center;
 }
 #linkfont {
