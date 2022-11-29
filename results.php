@@ -7,7 +7,10 @@
 </head>
 
 <body>
-
+    <?php
+    include("layout/navbar.php");
+    Navbar("Resultados", "index.php");
+    ?>
     <?php
     include("queries/user_data.php");
 

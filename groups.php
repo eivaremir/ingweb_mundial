@@ -17,6 +17,10 @@
 
 <body>
     <?php
+include("layout/navbar.php");
+Navbar("Clasificación", "index.php");
+?>
+    <?php
     include('queries/dbcon.php');
     $query = "SELECT * FROM `group` group by id order by id ;";
     $cursor = $con_bd->query($query);

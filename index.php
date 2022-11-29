@@ -29,7 +29,7 @@
             } else {
                 echo '
                     <span>' . $USER["name"] . '</span>
-                    <a href="logout.php" id="button">Cerrar sesión</a>
+                    <a href="logout.php" id="button2">Cerrar sesión</a>
                     
                 ';
             }
@@ -48,7 +48,7 @@
                 <h1>Equipos</h1>
             </div>
         </a>
-        <a href="" id="linkDash">
+        <a href="clasification.php" id="linkDash">
             <div class="dashButton3">
                 <h1>Clasificación</h1>
             </div>

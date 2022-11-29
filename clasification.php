@@ -8,7 +8,12 @@
 </head>
 
 <body>
+    <?php
+    include("layout/navbar.php");
+    Navbar("Clasificación", "index.php");
+    ?>
     <section>
+
         <div class='tournament'>
             <?php
             include("queries/dbcon.php");
