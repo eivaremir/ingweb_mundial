@@ -10,10 +10,12 @@ include('queries/dbcon.php');
     $sql = "SELECT * FROM team";
     $result = $con_bd -> query($sql);
     if($result -> num_rows > 0){
+        echo "<div class=teamsDad>";
         while($row = $result -> fetch_assoc()){
-            echo "<img src=https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/".$row["code"]."?tx=c_fill,g_auto,q_auto,w_70,h_46>";
-            echo "<a href=team.php?code=".$row["code"].">" .$row["name"]. "</a> <br>";
+            echo "<div class=teamsSon><img src=https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/".$row["code"]."?tx=c_fill,g_auto,q_auto,w_70,h_46> <br>";
+            echo "<a id=linkfont href=team.php?code=".$row["code"].">" .$row["name"]. "</a> <img id=starImage src=assets/Star.png></div>";
          }
+        echo "</div>";
     }
 ?>
 <?php
