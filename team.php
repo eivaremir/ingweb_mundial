@@ -25,10 +25,23 @@
                 $id = $row["id"];
                 $name = $row["name"];
 
+
             }
         }
     }
+
     Navbar($name, "teams.php");
+
+    $sql = "SELECT * FROM team";
+    $result = $con_bd->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            if ($codigo == $row['code']) {
+                echo "Logros:" .$row["achivements"]. "<br><br>";
+            }
+        }
+    }
+    
     $sql = "SELECT * FROM team_match inner join team on team_match.team = team.id where team.code= '$codigo'";
     $result = $con_bd->query($sql);
     if ($result->num_rows > 0) {
