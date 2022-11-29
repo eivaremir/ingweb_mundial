@@ -19,29 +19,29 @@
     </div>
     <div class="bottom" onmouser>
         <a href="results.php" id="linkDash">
-            <div class="dashButton">
+            <div class="dashButton1">
                 <h1>Resultados</h1>
             </div>
         </a>
         
         <a href="teams.php" id="linkDash">
-            <div class="dashButton">
+            <div class="dashButton2">
                 <h1>Equipos</h1>
             </div>
         </a>
         <a href="" id="linkDash">
-            <div class="dashButton">
+            <div class="dashButton3">
                 <h1>Clasificación</h1>
             </div>
         </a>
     <div class="bottom">
         <a href="groups.php" id="linkDash">
-            <div class="dashButton">
+            <div class="dashButton4">
                 <h1 align="center">Tabla de posiciones</h1>
             </div>
         </a>
         <a href="favoritos.php" id="linkDash">
-            <div class="dashButton">
+            <div class="dashButton5">
                 <h1>Favoritos</h1>
             </div>
         </a>
@@ -58,10 +58,10 @@ include("queries/user_data.php");
 
 
 if($USER){
-    echo "
-        <a href='logout.php'>log out</a><br>
-    ";
     echo "<h1>Welcome, ".$_SESSION["email"] ."</h1>";
+    echo "
+    <a href='logout.php'>log out</a><br>
+";
 }
 else {
     echo "
