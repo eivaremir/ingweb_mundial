@@ -23,6 +23,11 @@ body {
 	justify-content: center;
 	align-items: center;
 }
+.dashButton:hover {
+	-webkit-animation: breathing 5s ease-out infinite normal;
+	animation: breathing 5s ease-out infinite normal;
+	background: url('assets/resultado.jpg') no-repeat;
+}
 
 .top {
 	display: flex;

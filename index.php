@@ -17,7 +17,7 @@
             <a href="register.php" id="button2">Registrarse</a>
         </div>
     </div>
-    <div class="bottom">
+    <div class="bottom" onmouser>
         <a href="results.php" id="linkDash">
             <div class="dashButton">
                 <h1>Resultados</h1>
