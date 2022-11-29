@@ -13,16 +13,109 @@ body {
 	font-size: 45px;
 	color: #8d1c3d;
 }
-.dashButton {
+
+/*una locura */
+.dashButton1 {
 	display: flex;
 	margin: 10px;
-	height: 189px;
-	width: 300px;
+	height: 153px;
+	width: 258px;
 	background-color: #8d1c3d;
 	border-radius: 25px;
 	justify-content: center;
 	align-items: center;
 }
+.dashButton2 {
+	display: flex;
+	margin: 10px;
+	height: 153px;
+	width: 258px;
+	background-color: #8d1c3d;
+	border-radius: 25px;
+	justify-content: center;
+	align-items: center;
+}
+.dashButton3 {
+	display: flex;
+	margin: 10px;
+	height: 153px;
+	width: 258px;
+	background-color: #8d1c3d;
+	border-radius: 25px;
+	justify-content: center;
+	align-items: center;
+}
+.dashButton4 {
+	display: flex;
+	margin: 10px;
+	height: 153px;
+	width: 258px;
+	background-color: #8d1c3d;
+	border-radius: 25px;
+	justify-content: center;
+	align-items: center;
+}
+.dashButton5 {
+	display: flex;
+	margin: 10px;
+	height: 153px;
+	width: 258px;
+	background-color: #8d1c3d;
+	border-radius: 25px;
+	justify-content: center;
+	align-items: center;
+}
+
+.dashButton1:hover {
+	background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+		url('assets/resultado1.jpg') no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	animation: fadeIn 1s;
+}
+.dashButton2:hover {
+	background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+		url('assets/Qatar.jpg') no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	animation: fadeIn 1s;
+}
+.dashButton3:hover {
+	background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+		url('assets/Class.jpg') no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	animation: fadeIn 1s;
+}
+.dashButton4:hover {
+	background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+		url('assets/Tabla.jpg') no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	animation: fadeIn 1s;
+}
+.dashButton5:hover {
+	background: linear-gradient(rgba(57, 57, 57, 0.7), rgba(57, 57, 57, 0.7)),
+		url('assets/Favorito.jpg') no-repeat;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	animation: fadeIn 1s;
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0.5;
+	}
+	100% {
+		opacity: 3;
+	}
+}
+
+/*Hasta aquí está loco */
 
 .top {
 	display: flex;
@@ -217,4 +310,8 @@ form {
 #linkDash {
 	text-decoration: none;
 	color: #ebebeb;
+}
+
+h1 {
+	font-family: 'Inter';
 }
