@@ -83,7 +83,7 @@ form {
 .matches {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  gap: 15px;
 }
 .match-container {
   border: 1px solid gray;
@@ -92,6 +92,11 @@ form {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  cursor: pointer;
+}
+.match-container:hover {
+  box-shadow: 0 0 9px rgb(100 0 0 / 45%);
+  transition: 0.3s;
 }
 .match-result {
   display: flex;

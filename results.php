@@ -24,27 +24,26 @@
         $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
 
         echo "
-    <div class='match-container'>
-    <div class='match-result'>
-        
-        <div class='result-country'>
-            <div class='flag' style='background-image: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $result[0]["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46)'></div>
-            <div class='name'>" . $result[0]["code"] . "</div>
-        </div>
-        <div class='result-score'>" . $result[0]["goals"] . "</div>
-        <span>VS</span>
-        <div class='result-score'>" . $result[1]["goals"] . "</div>
-        <div class='result-country'>
-        <div class='flag' style='background-image: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $result[1]["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46)'></div>
-            <div class='name'>" . $result[1]["code"] . "</div>
-        </div>
-    </div>
-    <div class='match-footer'>
-    " . $match["date"] . "(UTC-5)
-    </div>
-    </div>
-    
-    ";
+            <div class='match-container'>
+            <div class='match-result'>
+                
+                <div class='result-country'>
+                    <div class='flag' style='background-image: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $result[0]["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46)'></div>
+                    <div class='name'>" . $result[0]["code"] . "</div>
+                </div>
+                <div class='result-score'>" . $result[0]["goals"] . "</div>
+                <span>VS</span>
+                <div class='result-score'>" . $result[1]["goals"] . "</div>
+                <div class='result-country'>
+                <div class='flag' style='background-image: url(https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $result[1]["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46)'></div>
+                    <div class='name'>" . $result[1]["code"] . "</div>
+                </div>
+            </div>
+            <div class='match-footer'>
+            " . $match["date"] . "(UTC-5)
+            </div>
+            </div>
+        ";
 
     }
     echo "</div>";
