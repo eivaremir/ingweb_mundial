@@ -5,66 +5,74 @@
     <title>Favorito</title>
     <?php include("layout/head.php") ?>
     <style>
-    .teamsSon {
-        display: flex;
-        overflow: auto;
-    }
+        .teamsSon {
+            display: flex;
+            overflow: auto;
+        }
 
-    .titulo {
-        overflow: auto;
-        float: left;
+        .titulo {
+            overflow: auto;
+            float: left;
 
 
-    }
+        }
 
-    table,
-    th,
-    td {
-        border: 1px solid black;
-        border-collapse: collapse;
-        padding: 5px;
-    }
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 5px;
+        }
     </style>
 </head>
 
 <body>
     <?php
-    include("layout/navbar.php");
-    Navbar("Favoritos", "index.php");
-    include("queries/user_data.php");
+include("layout/navbar.php"); ?>
+    <div style="display:flex; flex-direction: column;">
+        <?php
 
-    $sql = "SELECT * FROM user";
-    $result = $con_bd -> query($sql);
-    if($result -> num_rows > 0){
-        while($row = $result -> fetch_assoc()){
-            $favorito= $row['favorite_team'];
-            
-            $sql = "SELECT * FROM team";
-            $result = $con_bd -> query($sql);
-            if($result -> num_rows > 0){
-                while($row = $result -> fetch_assoc()){
-                    if ($favorito == $row['id']){
-                        echo "<div class=titulo><h1>" .$row["name"]. "</h1></div>";
-                        echo "<div class=teamsSon><img src=https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $row["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46> <br></div>";
-                        echo "<div><h2>" .$row["code"]. "</h2></div>";   
+        Navbar("Favoritos", "index.php");
+        include("queries/user_data.php");
+
+        $sql = "SELECT * FROM user";
+        $result = $con_bd->query($sql);
+
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $favorito = $row['favorite_team'];
+
+                $sql = "SELECT * FROM team";
+                $result = $con_bd->query($sql);
+                if ($result->num_rows > 0) {
+                    while ($row = $result->fetch_assoc()) {
+                        if ($favorito == $row['id']) {
+
+
+                            echo "<div class=titulo><h1>" . $row["name"] . "</h1></div>";
+                            // echo "<div class=teamsSon><img src=https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/" . $row["code"] . "?tx=c_fill,g_auto,q_auto,w_70,h_46> <br></div>";
+                            // echo "<div><h2>" . $row["code"] . "</h2></div>";
                         }
-                        echo "</div>";
+                        //echo "</div>";
+                    }
                 }
             }
         }
-         }
+        echo "<div class='fav-team-container'>";
+        echo "<div>";
         $sql = "SELECT * FROM group_statistics";
         $result = $con_bd->query($sql);
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                if($favorito == $row["id"]){
-                    $grupo=$row["GROUP"];
-                echo "<h2>Grupo " . $row["GROUP"] . "<h2><br>";
+                if ($favorito == $row["id"]) {
+                    $grupo = $row["GROUP"];
+                    echo "<h2>Grupo " . $row["GROUP"] . "</h2>";
                 }
             }
         }
 
-            echo "
+        echo "
             <table>
                 <tr>
                     <th>Codigo</th>
@@ -79,54 +87,62 @@
                     <th>PTS</th>
                 </tr>
             ";
-            $sql = "SELECT * FROM group_statistics WHERE `GROUP` = '" . $grupo . "' order by pts desc;";
-            $result = $con_bd->query($sql);
-            if ($result->num_rows > 0) {
-                while ($row = $result->fetch_assoc()) {
-                    echo "<tr>";
-                    echo "<td>" . $row["code"] . "</td>";
-                    echo "<td>" . $row["name"] . "</td>";
-                    echo "<td>" . $row["JJ"] . "</td>";
-                    echo "<td>" . $row["JG"] . "</td>";
-                    echo "<td>" . $row["JE"] . "</td>";
-                    echo "<td>" . $row["JP"] . "</td>";
-                    echo "<td>" . $row["GC"] . "</td>";
-                    echo "<td>" . $row["GF"] . "</td>";
-                    echo "<td>" . $row["DF"] . "</td>";
-                    echo "<td>" . $row["PTS"] . "</td>";
-                    echo "</tr>";
+        $sql = "SELECT * FROM group_statistics WHERE `GROUP` = '" . $grupo . "' order by pts desc;";
+        $result = $con_bd->query($sql);
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
+                $class_name = "";
+                if ($row["id"] == $favorito) {
+                    $class_name = "fav-team";
                 }
+
+                echo "<tr>";
+                echo "<td class=" . $class_name . ">" . $row["code"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["name"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["JJ"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["JG"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["JE"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["JP"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["GC"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["GF"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["DF"] . "</td>";
+                echo "<td class=" . $class_name . ">" . $row["PTS"] . "</td>";
+                echo "</tr>";
             }
-            echo "</table>";
+        }
+        echo "</table>";
+
+
+        echo "</div>";
 
 
 
 
-
-
-
-    ?>
-    <?php
-    if (!$USER) {
-        header("location:login.php");
-    }
-    echo "<h2>Partidos</h2>";
-    echo "<div class='matches'>";
-    $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =" . $USER["favorite_team"] . " group by `match` order by fm.date;";
-    $cursor = $con_bd->query($query);
-    $matches = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
-
-    foreach ($matches as $match) {
-        $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by id;";
-        //echo $query;
-        $cursor = $con_bd->query($query);
-        $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
-        $contentEditable = "";
-
-        if ($USER && $USER["is_admin"]) {
-            $contentEditable = "contentEditable";
+        ?>
+        <?php
+        if (!$USER) {
+            header("location:login.php");
         }
         echo "
+        <div style='flex-basis: 30%;'>
+        <h2>Partidos</h2>
+    
+        <div class='matches-flex-container'>";
+        $query = "SELECT `match` as 'id',fm.date FROM team_match tm inner join football_match fm on fm.id = tm.match where team =" . $USER["favorite_team"] . " group by `match` order by fm.date;";
+        $cursor = $con_bd->query($query);
+        $matches = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
+
+        foreach ($matches as $match) {
+            $query = "SELECT team_match.*,team.code,team.name FROM team_match inner join team on team_match.team = team.id where `match`=" . $match["id"] . " order by id;";
+            //echo $query;
+            $cursor = $con_bd->query($query);
+            $result = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
+            $contentEditable = "";
+
+            if ($USER && $USER["is_admin"]) {
+                $contentEditable = "contentEditable";
+            }
+            echo "
             
             <div class='match-container'>
             <div class='match-result'>
@@ -149,21 +165,23 @@
             </div>
         ";
 
-    }
-    echo "</div>";
-    
-    $sql = "SELECT * FROM player";
-    $result = $con_bd->query($sql);
-    if ($result->num_rows > 0) {
-        echo "<ol>";
-        while ($row = $result->fetch_assoc()) {
-            if ($favorito == $row['team']) {
-                echo "<li>" . $row["name"] . "</li>";
-            }
         }
-        echo "</ol>";
-    }
-    ?>
+        echo "</div></div><div><h2>Jugadores</h2>";
+
+        $sql = "SELECT * FROM player";
+        $result = $con_bd->query($sql);
+        if ($result->num_rows > 0) {
+            echo "<ol>";
+            while ($row = $result->fetch_assoc()) {
+                if ($favorito == $row['team']) {
+                    echo "<li>" . $row["name"] . "</li>";
+                }
+            }
+            echo "</ol>";
+        }
+        echo "</div></div>";
+        ?>
+    </div>
     <?php include("assets/notifications.php") ?>
 </body>
 

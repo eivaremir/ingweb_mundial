@@ -204,10 +204,10 @@ form {
 .match-container {
   border: 1px solid gray;
   border-radius: 10px;
-  padding: 10px 15px;
+  padding: 20px 25px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 25px;
   cursor: pointer;
 }
 .match-container:hover {
@@ -339,7 +339,7 @@ h1 {
   flex-basis: 32%;
   gap: 12px;
 }
-.team-summary h2,
+h2,
 h3 {
   margin: 0;
 }
@@ -358,4 +358,19 @@ h3 {
 th {
   background-color: #8d1c3d;
   color: white;
+}
+td {
+  font-weight: 400;
+}
+td.fav-team {
+  font-weight: 600;
+}
+.fav-team-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+.matches-flex-container {
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
 }
