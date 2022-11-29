@@ -2,18 +2,19 @@
 include('layout/root.php');
 include('queries/dbcon.php');
 ?>
-<h1>HOLA</h1>
+<div class="top">
+    <a href="index.php"><img src="assets/arrowback.png" alt="arrow" id="arrow"> </a>
+    <div><h1 id="titlePage">Equipos</h1></div>
+</div>
 <?php
     $sql = "SELECT * FROM team";
     $result = $con_bd -> query($sql);
     if($result -> num_rows > 0){
-        echo "<ol>";
         while($row = $result -> fetch_assoc()){
-            echo "<li><a href=team.php?code=".$row["code"].">" .$row["name"]. "</a></li>";
+            echo "<img src=https://cloudinary.fifa.com/api/v3/picture/flags-sq-2/".$row["code"]."?tx=c_fill,g_auto,q_auto,w_70,h_46>";
+            echo "<a href=team.php?code=".$row["code"].">" .$row["name"]. "</a> <br>";
          }
-         echo "</ol>";
     }
-
 ?>
 <?php
 include('layout/root2.php');

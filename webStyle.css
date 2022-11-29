@@ -10,7 +10,7 @@ body {
   background-repeat: no-repeat;
 }
 #titlePage {
-  font-size: 50px;
+  font-size: 45px;
   color: #8d1c3d;
 }
 .top {
@@ -123,4 +123,8 @@ form {
 }
 .match-footer {
   font-size: 0.7em;
+}
+
+#arrow {
+  width: 30px;
 }
