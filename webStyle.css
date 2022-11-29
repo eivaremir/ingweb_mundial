@@ -188,3 +188,7 @@ form {
 #starImage {
   vertical-align: middle;
 }
+.favorite-selector {
+  cursor: pointer;
+  color: black;
+}
