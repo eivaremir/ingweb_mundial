@@ -14,6 +14,15 @@
         overflow: auto;
         float: left;
 
+
+    }
+
+    table,
+    th,
+    td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
     }
     </style>
 </head>
@@ -49,10 +58,51 @@
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 if($favorito == $row["id"]){
+                    $grupo=$row["GROUP"];
                 echo "<h2>Grupo " . $row["GROUP"] . "<h2><br>";
                 }
             }
         }
+
+            echo "
+            <table>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Nombre</th>
+                    <th>JJ</th>
+                    <th>JG</th>
+                    <th>JE</th>
+                    <th>JP</th>
+                    <th>GC</th>
+                    <th>GF</th>
+                    <th>DF</th>
+                    <th>PTS</th>
+                </tr>
+            ";
+            $sql = "SELECT * FROM group_statistics WHERE `GROUP` = '" . $grupo . "' order by pts desc;";
+            $result = $con_bd->query($sql);
+            if ($result->num_rows > 0) {
+                while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    echo "<td>" . $row["code"] . "</td>";
+                    echo "<td>" . $row["name"] . "</td>";
+                    echo "<td>" . $row["JJ"] . "</td>";
+                    echo "<td>" . $row["JG"] . "</td>";
+                    echo "<td>" . $row["JE"] . "</td>";
+                    echo "<td>" . $row["JP"] . "</td>";
+                    echo "<td>" . $row["GC"] . "</td>";
+                    echo "<td>" . $row["GF"] . "</td>";
+                    echo "<td>" . $row["DF"] . "</td>";
+                    echo "<td>" . $row["PTS"] . "</td>";
+                    echo "</tr>";
+                }
+            }
+            echo "</table>";
+
+
+
+
+
 
 
     ?>
@@ -101,7 +151,18 @@
 
     }
     echo "</div>";
-
+    
+    $sql = "SELECT * FROM player";
+    $result = $con_bd->query($sql);
+    if ($result->num_rows > 0) {
+        echo "<ol>";
+        while ($row = $result->fetch_assoc()) {
+            if ($favorito == $row['team']) {
+                echo "<li>" . $row["name"] . "</li>";
+            }
+        }
+        echo "</ol>";
+    }
     ?>
     <?php include("assets/notifications.php") ?>
 </body>
