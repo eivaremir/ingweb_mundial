@@ -25,10 +25,11 @@ Navbar("Clasificación", "index.php");
     $query = "SELECT * FROM `group` group by id order by id ;";
     $cursor = $con_bd->query($query);
     $groups = mysqli_fetch_all($cursor, MYSQLI_ASSOC);
+    echo "<div class=groupStyle>";
     foreach ($groups as $group) {
         echo "
-        <h1>Grupo " . $group["id"] . "</h1>
-        <table>
+        <div class=groupStyleSon><h1>Grupo " . $group["id"] . "</h1>
+        <table> 
             <tr>
                 <th>Codigo</th>
                 <th>Nombre</th>
@@ -60,8 +61,9 @@ Navbar("Clasificación", "index.php");
                 echo "</tr>";
             }
         }
-        echo "</table>";
+        echo "</table></div>";
     }
+    echo "</div> <br> <br>";
 
     ?>
 

@@ -23,9 +23,8 @@
                 ';
             } else {
                 echo '
-                    <span>' . $USER["name"] . '</span>
+                    <span id="styleSpan">' . $USER["name"] . '</span>
                     <a href="logout.php" id="button2">Cerrar sesión</a>
-                    
                 ';
             }
             ?>
@@ -73,7 +72,7 @@
 
 
 if ($USER) {
-    echo "<h1>Welcome, " . $_SESSION["email"] . "</h1>";
+    echo "<h1 id=welcome>Welcome, " . $_SESSION["email"] . "</h1>";
     ;
 }
 
