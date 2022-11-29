@@ -321,3 +321,37 @@ h1 {
 .favorite-selector {
   color: black !important;
 }
+
+.team-details-container {
+  display: flex;
+  gap: 25px;
+  background: white;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 0 7px rgb(100 0 0 / 20%);
+  margin: 50px 0;
+}
+.team-summary {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 32%;
+  gap: 12px;
+}
+.team-summary h2,
+h3 {
+  margin: 0;
+}
+.team-flag {
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  box-shadow: 0 0 9px black;
+}
+.team-quote {
+  flex-basis: 32%;
+}
