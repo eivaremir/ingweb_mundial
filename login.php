@@ -4,7 +4,7 @@ include("layout/root.php");
 include("queries/dbcon.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!isset($_POST["email"]) | !isset($_POST["pwd"])) {
+    if (empty($_POST["email"]) | empty($_POST["pwd"])) {
         echo "please enter both email and password";
     } else {
         // consultar valores en base de datos
