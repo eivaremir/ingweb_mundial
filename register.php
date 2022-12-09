@@ -12,8 +12,16 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
         header('location:register.php?error=incomplete_input');
         //echo "";
     }
+
     elseif($pwd !=$pwd2){
         header('location:register.php?error=passwords_mismatch');
+    }
+    elseif (strlen($pwd) < 8) {
+        header('location:register.php?error=password_length');
+    }
+    elseif (!preg_match("/^[\w\-\.]++@([\w\-]+\.)+[\w\-]{2,4}$/i",$email)){
+        
+        header('location:register.php?error=invalid_email_format');
     }
     else{
         $insert_user_query = "insert into user (name,email,password) values ('".$name."','". $email . "','".$pwd . "');";
@@ -33,6 +41,8 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 }
 
 include("alerts.php");
+
+
 ?>
         <form action='register.php' method='POST' align="center">
             <img src="assets/Add-Person.png" alt="registrar"> <br>
