@@ -213,6 +213,8 @@ class RegisterTests(TestCase):
     def register(self, email, name, password, password2):
 
         self.driver.get(f"{self.hostname}/{self.path}/register.php")
+        WebDriverWait(self.driver, self.default_timeout).until(
+            EC.presence_of_element_located((By.NAME, "email")))
         self.driver.find_element(By.NAME, "email").send_keys(email)
         self.driver.find_element(By.NAME, "name").send_keys(name)
         self.driver.find_element(By.NAME, "pwd").send_keys(password)
