@@ -5,7 +5,8 @@ include("queries/dbcon.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($_POST["email"]) | empty($_POST["pwd"])) {
-        echo "please enter both email and password";
+        header("location:login.php?error=incomplete_input");
+        //echo "please enter both email and password";
     } else {
         // consultar valores en base de datos
         $query = "SELECT email FROM user where email ='" . $_POST["email"] . "' and password ='" . $_POST["pwd"] . "'";
@@ -19,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             header("location:index.php");
 
         } else {
-            echo "Invalid credentials";
+            header("location:login.php?error=invalid_credentials");
         }
         //echo "session user is ". $_SESSION["email"];
     }
