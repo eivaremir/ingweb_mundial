@@ -62,7 +62,12 @@
             score.addEventListener("input", (e) => {
                 let value = e.target.innerText
                 
-                if (parseInt(value) || value === "0") {
+                if (parseInt(value) < 0 || parseInt(value)>31){
+                    console.log("error")
+                    showNotification('error', 'Failed operation');
+                }
+                else if (parseInt(value) || value === "0") {
+
                     fetch(`http://localhost:8080/oct27/ingweb_mundial/queries/update_match_result.php?id=${e.target.dataset.id}&value=${e.target.innerText}`)
                         .then(r => r.json())
                         .then(r => {
@@ -74,9 +79,7 @@
                             }
                         })
                 }
-                elseif (parseInt(value) < 0 && parseInt(value)>31){
-                    showNotification('error', 'Failed operation');
-                }
+                
 
             })
         })
