@@ -7,8 +7,9 @@ from selenium.webdriver.support.ui import WebDriverWait
 from sqlalchemy import create_engine, text
 from selenium.webdriver.common.by import By
 from datetime import datetime
-
+from time import sleep
 import pdb
+import re
 
 
 class TestCase(unittest.TestCase):
@@ -108,6 +109,148 @@ class TestCase(unittest.TestCase):
                 "assert_by": (By.ID, "welcome"),
             },
         ]
+
+    def get_path(self):
+        import pdb
+        pdb.set_trace()
+
+    def assert_path(self, path):
+        self.assertIn(path, self.driver.current_url)
+
+    def get_register_cases(self):
+
+        return [
+
+            {
+                "case": "1 valid",
+                "email": "prueba1@hotmail.com",
+                "pwd": 123456789,
+                "pwd2": 123456789,
+                "name": "Usuario-1",
+                "assertion_method": self.assert_path,
+                "assert_by": "login.php",
+
+            },
+            {
+                "case": "2 valid",
+                "email": "prueba2@gmail.com",
+                "pwd": "Contraseña1",
+                "pwd2": "Contraseña1",
+                "name": "Usuario-2",
+                "assertion_method": self.assert_path,
+                "assert_by": "login.php",
+
+            },
+            {
+                "case": "1 invalid",
+                "email": "prueba3@utp.ac.pa",
+                "pwd": "contra",
+                "pwd2": "contra",
+                "name": "Usuario-3",
+                "assertion_method": self.assert_path,
+                "assert_by": "register.php",
+
+            },
+            {
+                "case": "2 invalid",
+                "email": "prueba4@",
+                "pwd": "contra",
+                "pwd2": "contra",
+                "name": "Usuario$4",
+                "assertion_method": self.assert_path,
+                "assert_by": "register.php",
+
+            },
+            {
+                "case": "3 invalid",
+                "email": "",
+                "pwd": "",
+                "pwd2": "",
+                "name": "usuario&5",
+                "assertion_method": self.assert_path,
+                "assert_by": "register.php",
+
+            },
+            {
+                "case": "4 invalid",
+                "email": "5@dominio",
+                "pwd": "Contraseña2",
+                "pwd2": "Contra",
+                "name": "",
+                "assertion_method": self.assert_path,
+                "assert_by": "register.php",
+
+            },
+            {
+                "case": "5 invalid",
+                "email": "",
+                "pwd": "123456789",
+                "pwd2": "123456789",
+                "name": "Usuario-3",
+                "assertion_method": self.assert_path,
+                "assert_by": "register.php",
+
+            },
+            {
+                "case": "6 invalid",
+                "email": "",
+                "pwd": "",
+                "pwd2": "123456789",
+                "name": "Usuário4",
+                "assertion_method": self.assert_path,
+                "assert_by": "register.php",
+
+            },
+        ]
+
+
+class RegisterTests(TestCase):
+    """Pruebas de tabla de equivalencia"""
+
+    def setUp(self):
+        super().setUp()
+
+    def register(self, email, name, password, password2):
+
+        self.driver.get(f"{self.hostname}/{self.path}/register.php")
+        self.driver.find_element(By.NAME, "email").send_keys(email)
+        self.driver.find_element(By.NAME, "name").send_keys(name)
+        self.driver.find_element(By.NAME, "pwd").send_keys(password)
+        self.driver.find_element(By.NAME, "pwd2").send_keys(password2)
+        self.driver.find_element(By.ID, "botones").click()
+        sleep(2)
+
+    def assert_register(self, case):
+        self.log("Testing register: "+case["case"])
+        self.register(case["email"], case["name"], case["pwd"], case["pwd2"])
+        self.conn.execute(
+            text(f"delete from user where email ='{case['email']}'"))
+
+        case["assertion_method"](case["assert_by"])
+
+    def test_valid1(self):
+        self.assert_register(self.get_register_cases()[0])
+
+    def test_valid2(self):
+        self.assert_register(self.get_register_cases()[1])
+
+    def test_invalid1(self):
+        self.assert_register(self.get_register_cases()[2])
+
+    def test_invalid2(self):
+        self.assert_register(self.get_register_cases()[3])
+
+    def test_invalid3(self):
+        self.assert_register(self.get_register_cases()[4])
+
+    def test_invalid4(self):
+        self.assert_register(self.get_register_cases()[5])
+
+    def test_invalid5(self):
+        self.assert_register(self.get_register_cases()[6])
+
+    def test_invalid6(self):
+        self.assert_register(self.get_register_cases()[7])
 
 
 class LimitValueTests(TestCase):
