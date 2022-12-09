@@ -63,7 +63,7 @@
                 let value = e.target.innerText
 
                 if (parseInt(value) || value === "0") {
-                    fetch(`http://localhost/php/semestral/queries/update_match_result.php?id=${e.target.dataset.id}&value=${e.target.innerText}`)
+                    fetch(`http://localhost:8080/oct27/ingweb_mundial/queries/update_match_result.php?id=${e.target.dataset.id}&value=${e.target.innerText}`)
                         .then(r => r.json())
                         .then(r => {
                             if (r.result == "success") {

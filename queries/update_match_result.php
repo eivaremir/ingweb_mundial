@@ -2,6 +2,8 @@
 
 include("dbcon.php");
 
+header("Access-Control-Allow-Origin: *");
+
 $result_id = $_GET["id"];
 $new_value = $_GET["value"];
 
